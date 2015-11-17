@@ -1,56 +1,8 @@
 <?php 
 
 include_once "simplehtmldom_1_5/simple_html_dom.php";
+include_once "Product.php";
 
-// class Mog {
-	
-// 	public $name;
-// 	public $srcOrigin;
-// 	public $imgUrl;
-// 	// public $localPath;
-// 	public $srcViews;
-// 	public $srcFaves;
-// 	public $srcUrl;
-// 	public $rating;
-// 	public $rateBias;
-// 	public $active;
-
-// 	public function __construct($name, $imgUrl, $srcViews, $srcFaves, $srcUrl, $active) {
-// 		$this->name = $name;
-// 		// $this->srcOrigin = $srcOrigin;
-// 		$this->imgUrl = $imgUrl;
-// 		// $this->localPath = $localPath;
-// 		$this->srcViews = $srcViews;
-// 		$this->srcFaves = $srcFaves;
-// 		$this->rating = ($srcViews + $srcFaves);
-// 		$this->srcUrl = $srcUrl;
-// 		$this->active = $active;
-// 	}
-
-// 	public function saveToDB() {
-// 		try {
-// 			$db = new PDO('mysql:host=localhost;dbname=MemeSlamDev;charset=utf8','root','');
-// 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-// 			$query = $db->prepare("insert into MogMaster (name, img_url, src_url, rating, active) 
-// 				values (:name, :imgUrl, :srcUrl, :rating, :active)");
-// 			$query->execute(['name'=>$this->name, 'imgUrl'=>$this->imgUrl, 'srcUrl'=>$this->srcUrl, 'rating'=>$this->rating, 'active'=>$this->active]);
-// 		} catch (PDOException $e) {
-// 			die($e->getMessage());	
-// 		}
-// 	}
-
-// 	public function saveToCSV($filename) {
-// 		$line = [];
-// 		$line[] = $this->name;
-// 		$line[] = $this->srcUrl;
-// 		$line[] = $this->rating;
-// 		$line[] = $this->active;
-		
-// 		$csv = fopen($filename, 'a') or die("Unable to open the file!");
-// 		fputcsv($csv, $line);
-// 		fclose($csv);
-// 	}
-// }
 
 // mainExecute();
 
