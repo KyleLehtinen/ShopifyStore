@@ -10,7 +10,7 @@ CREATE TABLE ShopifyImportMaster(
 	Title varchar(255) NOT NULL,	
 	`Body (HTML)` varchar(255) NOT NULL,
 	Vendor varchar(255) NOT NULL,	
-	Type varchar(255),
+	Type varchar(255) NOT NULL,
 	Tags varchar(255) NOT NULL,
 	Published BOOLEAN DEFAULT 0,
 	`Option1 Name` varchar(255) NOT NULL,
@@ -49,5 +49,6 @@ CREATE TABLE ShopifyImportMaster(
 	`Google Shopping / Custom Label 3` varchar(255),	
 	`Google Shopping / Custom Label 4` varchar(255),	
 	`Variant Image` varchar(255),	
-	`Variant Weight Unit` varchar(2)
+	`Variant Weight Unit` varchar(2),
+	collection varchar(255)
 );

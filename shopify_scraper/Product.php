@@ -33,7 +33,7 @@ class Product {
 	$google_shop_gender, $google_shop_product_category, $seo_title, $seo_description, $google_shop_adword_grouping,
 	$google_shop_adword_labels, $google_shop_condition, $google_shop_custom_product,
 	$google_shop_custom_label_0, $google_shop_custom_label_1, $google_shop_custom_label_2,
-	$google_shop_custom_label_3, $google_shop_custom_label_4, $variant_img, $variant_weight_unit;
+	$google_shop_custom_label_3, $google_shop_custom_label_4, $variant_img, $variant_weight_unit, $collection;
 
 	
 	/*
@@ -83,7 +83,8 @@ class Product {
 								$google_shop_custom_label_1 = '', 
 								$google_shop_custom_label_2 = '',
 								$google_shop_custom_label_3 = '', 
-								$google_shop_custom_label_4 = '') 
+								$google_shop_custom_label_4 = '',
+								$collection = '') 
 	{
 		$this->handle = $handle; 
 		$this->title = $title; 
@@ -129,6 +130,7 @@ class Product {
 		$this->google_shop_custom_label_4 = $google_shop_custom_label_4; 
 		$this->variant_img = $variant_img; 
 		$this->variant_weight_unit = $variant_weight_unit;
+		$this->collection = $collection;
 	}
 
 	//Method used to insert this record in to the db
@@ -150,7 +152,7 @@ class Product {
 										'SEO Title', 'SEO Description', 'Google Shopping / AdWords Grouping', 'Google Shopping / AdWords Labels',
 										'Google Shopping / Condition', 'Google Shopping / Custom Product', 'Google Shopping / Custom Label 0',
 										'Google Shopping / Custom Label 1', 'Google Shopping / Custom Label 2', 'Google Shopping / Custom Label 3',	
-										'Google Shopping / Custom Label 4', Variant Image', 'Variant Weight Unit') 
+										'Google Shopping / Custom Label 4', Variant Image', 'Variant Weight Unit', 'collection') 
 									values 
 									(	:handle, :title, :body_html, :vendor, :type, :tags, :published,
 										:option1_name, :option1_value, :option2_name, :option2_value,
@@ -163,7 +165,7 @@ class Product {
 										:google_shop_adword_grouping, :google_shop_adword_labels, :google_shop_condition, 
 										:google_shop_custom_product,:google_shop_custom_label_0, :google_shop_custom_label_1, 
 										:google_shop_custom_label_2,:google_shop_custom_label_3, :google_shop_custom_label_4,
-										:variant_img, :variant_weight_unit)");
+										:variant_img, :variant_weight_unit, :collection)");
 			
 			$query->execute(['handle'=>$this->handle, 
 							 'title'=>$this->title, 
@@ -208,7 +210,8 @@ class Product {
 							 'google_shop_custom_label_3'=>$this->google_shop_custom_label_3,
 							 'google_shop_custom_label_4'=>$this->google_shop_custom_label_4,
 							 'variant_img'=>$this->variant_img, 
-							 'variant_weight_unit'=>$this->variant_weight_unit]);
+							 'variant_weight_unit'=>$this->variant_weight_unit,
+							 'collection'=>$this->collection]);
 		
 		} catch (PDOException $e) {
 			die($e->getMessage());	
@@ -269,6 +272,7 @@ class Product {
 		$line[] = $this->google_shop_custom_label_4;
 		$line[] = $this->variant_img; 
 		$line[] = $this->variant_weight_unit;
+		$line[] = $this->collection;
 		
 		//logic that opens a file, saves the array to a line in the file, and closesa
 		$csv = fopen($filename, 'a') or die("Unable to open the file!");
@@ -322,7 +326,8 @@ class Product {
 					  'Google Shopping / Custom Label 3',
 					  'Google Shopping / Custom Label 4',
 					  'Variant Image',
-					  'Variant Weight Unit'" . PHP_EOL);
+					  'Variant Weight Unit',
+					  'collection'" . PHP_EOL);
 		fclose($csv);
 	}
 }
